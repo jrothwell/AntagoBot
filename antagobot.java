@@ -114,7 +114,8 @@ class antagobot
 	} // END main()
 
 	public static void DEBUG (String msg) {
-		System.out.println("DEBUG: " + msg); // ...print a debug message.
+		if(DEBUG_MODE)
+			System.out.println("DEBUG: " + msg); // ...print a debug message.
 	}
 
 
@@ -209,14 +210,15 @@ class antagobot
 		{
 			if(line.length() == 0) // ignore blank lines
 			{
-				//will debug these bits eventually...
+				DEBUG("Ignoring blank line...");
 			}
 			else if(line.charAt(0) == '#') // ignore because it starts with # and is, therefore, a comment
 			{
-				//do nothing
+				DEBUG("Ignoring commented line: " + line);
 			}
 			else
 			{
+				DEBUG("Adding line: " + line);
 				lines.add(line);
 			}
 		}
